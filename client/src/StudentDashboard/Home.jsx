@@ -11,7 +11,7 @@ function Home() {
     { name: 'Attendance', Performance: 50 },
     { name: 'Quiz', Performance: 30 },
     { name: 'Assignment', Performance: 69 },
-    { name: 'ExtraCurricular', Performance: 60 },
+    { name: 'ExtraCurricular', Performance: 30 },
     { name: 'Quiz', Performance: 30 },
   ];
 
@@ -76,7 +76,7 @@ function Home() {
           onMouseEnter={() => setIsHovered(true)}
           onMouseLeave={() => setIsHovered(false)}
         >
-          <div className="bg-gray-800 rounded-lg p-5 flex flex-col justify-center items-center shadow-lg" style={{ ...cardStyle, background: '#2c2c2c', color: 'aqua' }}>
+          <div className="bg-gray-800 rounded-lg p-5 flex flex-col justify-center items-center shadow-lg" style={{ ...cardStyle, background: '#2c2c2c', color: '' }}>
             <FaNoteSticky className="text-4xl ml-auto text-green-500" />
             <h2 className="text-3xl font-bold">36</h2>
             <h2>Private Notes / Public Notes </h2> 
@@ -90,7 +90,7 @@ function Home() {
           <div className="bg-gray-800 rounded-lg p-5 flex flex-col justify-center items-center shadow-lg" style={{ ...cardStyle, background: '#2c2c2c', color: '#fff' }}>
             <CgPlayListCheck className="text-5xl text-blue-500" />
             <h2 className="text-3xl font-bold">36</h2>
-            <h2>Statistics Granted</h2> 
+            <h2>Assignment Score</h2> 
           </div>
         </div>
       </div>
@@ -114,7 +114,7 @@ function Home() {
         <YAxis />
         <Tooltip />
         <Legend />
-        <Line type="linear" dataKey="Performance" stroke="aqua" activeDot={{ r: 8 }} />
+        <Line type="linear" dataKey="Performance" stroke="grey" activeDot={{ r: 8 }} />
       </LineChart>
     </div>
   </ResponsiveContainer>
@@ -137,7 +137,7 @@ function Home() {
         <YAxis />
         <Tooltip />
         <Legend />
-        <Line type="monotone" dataKey="Performance" stroke="aqua" activeDot={{ r: 8 }} />
+        <Line type="monotone" dataKey="Performance" stroke="grey" activeDot={{ r: 8 }} />
       </LineChart>
     </div>
   </ResponsiveContainer>
@@ -149,22 +149,22 @@ function Home() {
           <Calendar />
         </div>
 
-        <div className="charts" style={cardStyle}> 
-          <div className="bg-[#2f2f2f] rounded-2xl dark-card shadow-xl h-full">
-            <h1 className="text-center text-2xl font-bold text-white">Pending Assignment</h1>
-            <div className="grid grid-cols-3 grid-rows-3 gap-4 bg-slate-700 rounded-b-2xl shadow-md h-full">
-              <div className="text-center">Subject</div>
-              <div className="text-center">Teachers Name</div>
-              <div className="text-center">Deadline</div>
-              <div className="text-center">English</div>
-              <div className="text-center">Mr.A.Roy</div>
-              <div className="text-center">22.03.2024</div>
-              <div className="text-center">Science</div>
-              <div className="text-center">Mr.Shyam Saha</div>
-              <div className="text-center">23.3.2024</div>
-            </div>
-          </div>
+        <div style={cardStyle}>
+      <div className="bg-[#2f2f2f] rounded-2xl dark-card shadow-xl h-full" >
+        <h1 className="text-center text-2xl font-bold text-white">Pending Assignment</h1>
+        <div className="grid grid-cols-3 grid-rows-3 gap-4 ">
+          <div className="text-center">Subject</div>
+          <div className="text-center">Teachers Name</div>
+          <div className="text-center">Deadline</div>
+          <div className="text-center">English</div>
+          <div className="text-center">Mr.A.Roy</div>
+          <div className="text-center">22.03.2024</div>
+          <div className="text-center">Science</div>
+          <div className="text-center">Mr.Shyam Saha</div>
+          <div className="text-center">23.3.2024</div>
         </div>
+      </div>
+    </div>
       </div>
 
       

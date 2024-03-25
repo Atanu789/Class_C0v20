@@ -61,6 +61,7 @@ const AssignmentUpload = () => {
                         onChange={handleChange}
                         className="w-full px-3 py-2 border border-gray-300 rounded shadow-sm"
                         placeholder="Assignment Title"
+                        
                     />
                 </div>
                 <div>
@@ -115,7 +116,7 @@ const AssignmentUpload = () => {
                         className="w-full px-3 py-2 border border-gray-300 rounded shadow-sm"
                     />
                 </div>
-                <button type="submit" className="px-4 py-2 font-bold text-black bg-blue-500 rounded hover:bg-blue-700">
+                <button type="submit" className="px-4 py-2 font-bold text-green bg-blue-500 rounded hover:bg-green-700">
                     Submit
                 </button>
             </form>

@@ -9,7 +9,10 @@ import NoteSection from './components/Notes';
 import QuizSection from './StudentDashboard/QuizSection';
 import Assignments from './StudentDashboard/Assignment';
 import AssignmentUpload from './TeacherComponents/AssignmentUpload';
-import Vocab from './VocabChallenge/Vocab';
+import Vocab from './TeacherComponents/VocabChallenge/Vocab';
+import QuestionUpload from './TeacherComponents/UploadQuiz';
+import QR from './TeacherComponents/QRCodeGenerator';
+
 
 
 function App() {
@@ -21,13 +24,16 @@ function App() {
       <Route path="/Teach" element={<Teacher/>} />
       <Route path="/uploadAssign" element={<AssignmentUpload/>}/>
       <Route path="/Voca" element={<Vocab/>}/>
-      <Route/>
+      <Route path="/teachquiz" element={<QuestionUpload/>}/>
+    
         <Route path="/" element={<Component/>}/>
        
         <Route path="/Stud" element={<Student/>} />
         <Route path="/notes" element={<NoteSection/>}/>
         <Route path="/quiz" element={<QuizSection/>}/>
         <Route path='/assignment' element={<Assignments/>}/>
+        <Route path="/QRCodegenerator" element={<QR/>}/>
+
         <Route/>
         </Routes>
      

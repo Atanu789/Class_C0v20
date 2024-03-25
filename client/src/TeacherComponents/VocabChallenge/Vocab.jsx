@@ -11,7 +11,7 @@ function App() {
       const minutes = currentTime.getMinutes();
       const seconds = currentTime.getSeconds();
 
-      if (hours === 0 && minutes === 0 && seconds === 0) {
+      if (hours === 3 && minutes === 36 && seconds === 0) {
         fetchRandomWord();
       }
     };
@@ -69,10 +69,27 @@ function App() {
 
   return (
     <div>
-      <h1 className='flex justify-center'>Vocabulary Challenge</h1>
+<h1 className='flex justify-center text-4xl font-bold' >Vocab Challenge</h1>
+
     
       {wordData.map((item, index) => (
-        <WordDescription key={index} word={item.word} meaning={item.meaning} />
+        <div key={index} className="word-description" style={{
+          backgroundColor: '#333',
+          color: '#fff',
+          padding: '20px',
+          margin: '10px',
+          borderRadius: '8px',
+          boxShadow: 'rgba(0, 0, 0, 0.4) 0px 2px 14px, rgba(0, 0, 0, 0.3) 0px 13px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset',
+          transition: 'all 0.3s ease',
+        }} onMouseEnter={(e) => {
+        
+          e.target.style.boxShadow = 'rgba(0, 0, 0, 0.8) 0px 2px 20px, rgba(0, 0, 0, 0.6) 0px 15px 15px -7px, rgba(0, 0, 0, 0.4) 0px -3px 0px inset';
+        }} onMouseLeave={(e) => {
+
+          e.target.style.boxShadow = 'rgba(0, 0, 0, 0.4) 0px 2px 14px, rgba(0, 0, 0, 0.3) 0px 13px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset';
+        }}>
+          <WordDescription word={item.word} meaning={item.meaning} />
+        </div>
       ))}
     </div>
   );

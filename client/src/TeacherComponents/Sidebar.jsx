@@ -16,13 +16,13 @@ function Sidebar({openSidebarToggle, OpenSidebar}) {
 
         <ul className='sidebar-list'>
             <li className='sidebar-list-item'>
-                <a href="">
+                <a href="/Teach">
                     <BsGrid1X2Fill className='icon'/> Dashboard
                 </a>
             </li>
 
             <li className='sidebar-list-item'>
-                <a href="">
+                <a href="teachquiz">
                     <BsFillGrid3X3GapFill className='icon'/> Upload Quiz
                 </a>
             </li>
@@ -37,7 +37,7 @@ function Sidebar({openSidebarToggle, OpenSidebar}) {
                 </a>
             </li>
             <li className='sidebar-list-item'>
-                <a href="">
+                <a href="QRCodegenerator">
                     <BsListCheck className='icon'/> Track Attendance
                 </a>
             </li>
