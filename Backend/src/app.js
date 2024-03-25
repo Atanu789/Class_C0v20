@@ -17,6 +17,7 @@ import  studentRouter from "./routes/student.routes.js"
 import notesRouter from "./routes/notes.routes.js"
 app.use("/api/v1/students",studentRouter)
 app.use("/api/v1/students",notesRouter)
+app.use("/api/v1/students",assignmentRouter)
 //assignment
 import assignmentRouter from "./routes/assignment.routes.js"
 import  teacherRouter from "./routes/teacher.routes.js"

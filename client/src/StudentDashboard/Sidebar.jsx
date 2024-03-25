@@ -1,4 +1,4 @@
-import React from 'react';
+
 import {
   BsGrid1X2Fill,
   BsFillGrid3X3GapFill,
@@ -8,16 +8,15 @@ import {
   BsFillGearFill
 } from 'react-icons/bs';
 import '../StudentApp.css';
-
-function Sidebar({ openSidebarToggle, OpenSidebar }) {
+function Sidebar({ open, toggle }) {
   return (
-    <aside id="sidebar" className={openSidebarToggle ? "sidebar-responsive" : ""}>
+    <aside id="sidebar" className={open ? "sidebar-responsive" : ""}>
       <div className='sidebar-title'>
         <div className='sidebar-brand bg-black rounded-full h-[70px] w-[70px]'>
           <img src='https://cdn-icons-png.flaticon.com/512/4892/4892735.png' className='h-16 w-16' alt="Profile" />
         </div>
         PROFILE
-        <span className='icon close_icon' onClick={OpenSidebar}>X</span>
+        <p className='icon close_icon' onClick={toggle}>X</p>
       </div>
 
       <ul className='sidebar-list'>
@@ -67,5 +66,6 @@ function Sidebar({ openSidebarToggle, OpenSidebar }) {
     </aside>
   );
 }
+
 
 export default Sidebar;
