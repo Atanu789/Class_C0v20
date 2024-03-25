@@ -33,8 +33,41 @@ const giveAssignment = asyncHandler(async(req,res)=>{
     .status(201)
     .json(new ApiResponse(200, createdAssignment, "Assignment created Successfully"));
 
+});
+
+const getAssignments = asyncHandler(async (req,res)=>{
+  try {
+    const assignments = await Assignment.find();
+    if(!assignments){
+      throw new ApiError(400,"error while fetching Assignments")
+    }
+    return res
+    .status(200)
+    .json(new ApiResponse(200,assignments,"Assignments fetch successfully"))
+  } catch (error) {
+    throw new ApiError(400 , `Can't fetch assignment from mongodb ${error}`)
+  }
 })
 
+const pptLocalPath = req.files?.pptUpload[0]?.path;
+if(!pptLocalPath){
+  throw new ApiError(400, "ppt file is required");
+}
+const ppt = await uploadOnCloudinary(pptLocalPath);
+
+  if (!ppt) {
+    throw new ApiError(400, "ppt file is required2");
+  }
+
+  const assignment = await Assignment.create({
+    pptUploadPath: ppt.url
+  })
+  return res
+    .status(201)
+    .json(new ApiResponse(200, assignment, "ppt registered Successfully"));
+    
 export {
-    giveAssignment
+    giveAssignment,
+    getAssignments,
+    submitAssignments
 }

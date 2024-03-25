@@ -10,8 +10,15 @@ function App() {
       const hours = currentTime.getHours();
       const minutes = currentTime.getMinutes();
       const seconds = currentTime.getSeconds();
+<<<<<<< HEAD:client/src/TeacherComponents/VocabChallenge/Vocab.jsx
 
       if (hours === 3 && minutes === 36 && seconds === 0) {
+=======
+      if (hours === 4 && minutes === 38 && seconds === 58) {
+        localStorage.clear();
+      }
+      if (hours === 4 && minutes === 39 && seconds === 0) {
+>>>>>>> b1cd3a30f9cca7b238c406e48d0581ac7a382651:client/src/VocabChallenge/Vocab.jsx
         fetchRandomWord();
       }
     };
@@ -40,17 +47,25 @@ function App() {
     }
   }, []);
 
-  const fetchRandomWord = async () => {
-    try {
+const fetchRandomWord = async () => {
+  try {
+    const lastFetchedTimestamp = localStorage.getItem('lastFetchedTimestamp');
+    const currentTime = new Date().getTime();
+    const twentyFourHours = 24 * 60 * 60 * 1000; // 24 hours in milliseconds
+
+    if (!lastFetchedTimestamp || currentTime - lastFetchedTimestamp > twentyFourHours) {
       const response = await fetch('https://random-word-api.herokuapp.com/word?number=1');
       const data = await response.json();
       const word = data[0];
 
       fetchWordMeaning(word);
-    } catch (error) {
-      console.error('Error fetching random word:', error);
+      localStorage.setItem('lastFetchedTimestamp', currentTime.toString());
     }
-  };
+  } catch (error) {
+    console.error('Error fetching random word:', error);
+  }
+};
+
 
   const fetchWordMeaning = async (word) => {
     try {
@@ -72,6 +87,7 @@ function App() {
 <h1 className='flex justify-center text-4xl font-bold' >Vocab Challenge</h1>
 
     
+<<<<<<< HEAD:client/src/TeacherComponents/VocabChallenge/Vocab.jsx
       {wordData.map((item, index) => (
         <div key={index} className="word-description" style={{
           backgroundColor: '#333',
@@ -91,6 +107,12 @@ function App() {
           <WordDescription word={item.word} meaning={item.meaning} />
         </div>
       ))}
+=======
+     {wordData.map((item, index) => (
+  index === 0 ? <WordDescription key={index} word={item.word} meaning={item.meaning} /> : null
+))}
+
+>>>>>>> b1cd3a30f9cca7b238c406e48d0581ac7a382651:client/src/VocabChallenge/Vocab.jsx
     </div>
   );
 }
