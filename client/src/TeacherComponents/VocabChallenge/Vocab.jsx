@@ -10,15 +10,11 @@ function App() {
       const hours = currentTime.getHours();
       const minutes = currentTime.getMinutes();
       const seconds = currentTime.getSeconds();
-<<<<<<< HEAD:client/src/TeacherComponents/VocabChallenge/Vocab.jsx
 
-      if (hours === 3 && minutes === 36 && seconds === 0) {
-=======
-      if (hours === 4 && minutes === 38 && seconds === 58) {
+      if (hours === 5 && minutes === 57 && seconds === 58) {
         localStorage.clear();
       }
-      if (hours === 4 && minutes === 39 && seconds === 0) {
->>>>>>> b1cd3a30f9cca7b238c406e48d0581ac7a382651:client/src/VocabChallenge/Vocab.jsx
+      if (hours === 5 && minutes === 58 && seconds === 0) {
         fetchRandomWord();
       }
     };
@@ -35,37 +31,33 @@ function App() {
     return () => clearInterval(interval);
   }, []);
 
-
   useEffect(() => {
-    
     const storedWordData = localStorage.getItem('wordData');
     if (storedWordData) {
       setWordData(JSON.parse(storedWordData));
     } else {
-      
       fetchRandomWord();
     }
   }, []);
 
-const fetchRandomWord = async () => {
-  try {
-    const lastFetchedTimestamp = localStorage.getItem('lastFetchedTimestamp');
-    const currentTime = new Date().getTime();
-    const twentyFourHours = 24 * 60 * 60 * 1000; // 24 hours in milliseconds
+  const fetchRandomWord = async () => {
+    try {
+      const lastFetchedTimestamp = localStorage.getItem('lastFetchedTimestamp');
+      const currentTime = new Date().getTime();
+      const twentyFourHours = 24 * 60 * 60 * 1000; // 24 hours in milliseconds
 
-    if (!lastFetchedTimestamp || currentTime - lastFetchedTimestamp > twentyFourHours) {
-      const response = await fetch('https://random-word-api.herokuapp.com/word?number=1');
-      const data = await response.json();
-      const word = data[0];
+      if (!lastFetchedTimestamp || currentTime - lastFetchedTimestamp > twentyFourHours) {
+        const response = await fetch('https://random-word-api.herokuapp.com/word?number=1');
+        const data = await response.json();
+        const word = data[0];
 
-      fetchWordMeaning(word);
-      localStorage.setItem('lastFetchedTimestamp', currentTime.toString());
+        fetchWordMeaning(word);
+        localStorage.setItem('lastFetchedTimestamp', currentTime.toString());
+      }
+    } catch (error) {
+      console.error('Error fetching random word:', error);
     }
-  } catch (error) {
-    console.error('Error fetching random word:', error);
-  }
-};
-
+  };
 
   const fetchWordMeaning = async (word) => {
     try {
@@ -73,9 +65,9 @@ const fetchRandomWord = async () => {
       const data = await response.json();
       const meaning = data[0]?.meanings[0]?.definitions[0]?.definition;
       if (meaning) {
-        const newWordData = [{ word, meaning }, ...wordData]; 
+        const newWordData = [{ word, meaning }, ...wordData];
         setWordData(newWordData);
-        localStorage.setItem('wordData', JSON.stringify(newWordData)); 
+        localStorage.setItem('wordData', JSON.stringify(newWordData));
       }
     } catch (error) {
       console.error('Error fetching word meaning:', error);
@@ -84,10 +76,7 @@ const fetchRandomWord = async () => {
 
   return (
     <div>
-<h1 className='flex justify-center text-4xl font-bold' >Vocab Challenge</h1>
-
-    
-<<<<<<< HEAD:client/src/TeacherComponents/VocabChallenge/Vocab.jsx
+      <h1 className='flex justify-center text-4xl font-bold'>Vocab Challenge</h1>
       {wordData.map((item, index) => (
         <div key={index} className="word-description" style={{
           backgroundColor: '#333',
@@ -97,22 +86,16 @@ const fetchRandomWord = async () => {
           borderRadius: '8px',
           boxShadow: 'rgba(0, 0, 0, 0.4) 0px 2px 14px, rgba(0, 0, 0, 0.3) 0px 13px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset',
           transition: 'all 0.3s ease',
-        }} onMouseEnter={(e) => {
-        
-          e.target.style.boxShadow = 'rgba(0, 0, 0, 0.8) 0px 2px 20px, rgba(0, 0, 0, 0.6) 0px 15px 15px -7px, rgba(0, 0, 0, 0.4) 0px -3px 0px inset';
-        }} onMouseLeave={(e) => {
-
-          e.target.style.boxShadow = 'rgba(0, 0, 0, 0.4) 0px 2px 14px, rgba(0, 0, 0, 0.3) 0px 13px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset';
-        }}>
-          <WordDescription word={item.word} meaning={item.meaning} />
+        }}
+          onMouseEnter={(e) => {
+            e.target.style.boxShadow = 'rgba(0, 0, 0, 0.8) 0px 2px 20px, rgba(0, 0, 0, 0.6) 0px 15px 15px -7px, rgba(0, 0, 0, 0.4) 0px -3px 0px inset';
+          }}
+          onMouseLeave={(e) => {
+            e.target.style.boxShadow = 'rgba(0, 0, 0, 0.4) 0px 2px 14px, rgba(0, 0, 0, 0.3) 0px 13px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset';
+          }}>
+          {index === 0 ? <WordDescription word={item.word} meaning={item.meaning} />: null}
         </div>
       ))}
-=======
-     {wordData.map((item, index) => (
-  index === 0 ? <WordDescription key={index} word={item.word} meaning={item.meaning} /> : null
-))}
-
->>>>>>> b1cd3a30f9cca7b238c406e48d0581ac7a382651:client/src/VocabChallenge/Vocab.jsx
     </div>
   );
 }
