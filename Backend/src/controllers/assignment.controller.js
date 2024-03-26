@@ -49,25 +49,25 @@ const getAssignments = asyncHandler(async (req,res)=>{
   }
 })
 
-const pptLocalPath = req.files?.pptUpload[0]?.path;
-if(!pptLocalPath){
-  throw new ApiError(400, "ppt file is required");
-}
-const ppt = await uploadOnCloudinary(pptLocalPath);
+// const pptLocalPath = req.files?.pptUpload[0]?.path;
+// if(!pptLocalPath){
+//   throw new ApiError(400, "ppt file is required");
+// }
+// const ppt = await uploadOnCloudinary(pptLocalPath);
 
-  if (!ppt) {
-    throw new ApiError(400, "ppt file is required2");
-  }
+//   if (!ppt) {
+//     throw new ApiError(400, "ppt file is required2");
+//   }
 
-  const assignment = await Assignment.create({
-    pptUploadPath: ppt.url
-  })
-  return res
-    .status(201)
-    .json(new ApiResponse(200, assignment, "ppt registered Successfully"));
+//   const assignment = await Assignment.create({
+//     pptUploadPath: ppt.url
+//   })
+//   return res
+//     .status(201)
+//     .json(new ApiResponse(200, assignment, "ppt registered Successfully"));
     
 export {
     giveAssignment,
     getAssignments,
-    submitAssignments
+    // submitAssignments
 }

@@ -11,10 +11,10 @@ function App() {
       const minutes = currentTime.getMinutes();
       const seconds = currentTime.getSeconds();
 
-      if (hours === 5 && minutes === 57 && seconds === 58) {
+      if (hours === 6 && minutes === 5 && seconds === 58) {
         localStorage.clear();
       }
-      if (hours === 5 && minutes === 58 && seconds === 0) {
+      if (hours === 6 && minutes === 6 && seconds === 0) {
         fetchRandomWord();
       }
     };
